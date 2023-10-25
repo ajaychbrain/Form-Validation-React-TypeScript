@@ -11,6 +11,7 @@ export const MainContainer = styled.div`
 `
 export const FormStyles = styled.input<{ icon: string }>`
   border: 1px solid black;
+  border-radius: 22px;
   padding: 15px;
   outline: none;
   margin: 1vw;

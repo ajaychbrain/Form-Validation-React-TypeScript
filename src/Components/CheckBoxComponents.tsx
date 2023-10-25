@@ -11,32 +11,23 @@ interface CheckBoxOption {
   }
 
   interface ICheckBox {
-    handleCheckBoxData: (data: any) => void;
+    handleCheckBoxData: (data: any, other: string) => void;
   }
 
   const CheckboxComponent: React.FC<ICheckBox> = (props) => {
-    const [options, setOptions] = useState<CheckBoxOption>({
-      friendOrColleague: false,
-      google: false,
-      articleNews: false,
-      blogPost: false,
-      other: false,
-    });
+    const [options, setOptions] = useState("");
     const [otherData, setOtherData] = useState<string>("");
 
     useEffect(() => {
-      props.handleCheckBoxData(options);
-    }, [options]);
+      props.handleCheckBoxData(options, otherData);
+    }, [options,otherData]);
   
 
 
 
-    const handleCheckboxChange = (option: boolean, opt: string) => {
+    const handleCheckboxChange = (options: string) => {
       // console.log(options);
-      setOptions({
-        ...options,
-        [opt]: option,
-      });
+      setOptions(options);
     };
 
 
@@ -52,13 +43,11 @@ interface CheckBoxOption {
         
         <CheckboxLabel>
         <CheckboxInput
-          type="checkbox"
-          checked={options.friendOrColleague}
+          type="radio"
+          name="option"
+          value="friendOrColleague"
           onChange={() =>
-            handleCheckboxChange(
-              !options["friendOrColleague"],
-              "friendOrColleague"
-            )
+            handleCheckboxChange("friendOrColleague")
           }
          
         />
@@ -67,9 +56,10 @@ interface CheckBoxOption {
 
       <CheckboxLabel>
         <CheckboxInput
-          type="checkbox"
-          checked={options.google}
-          onChange={() => handleCheckboxChange(!options["google"], "google")}
+          type="radio"
+         name="option"
+         value="google"
+          onChange={() => handleCheckboxChange("google")}
           
         />
         Google
@@ -77,10 +67,12 @@ interface CheckBoxOption {
 
       <CheckboxLabel>
         <CheckboxInput
-          type="checkbox"
-          checked={options.articleNews}
+          type="radio"
+        name="option"
+        value="articleNews"
+
           onChange={() =>
-            handleCheckboxChange(!options["articleNews"], "articleNews")
+            handleCheckboxChange("articleNews")
           }
           
           
@@ -90,10 +82,11 @@ interface CheckBoxOption {
 
       <CheckboxLabel>
         <CheckboxInput
-          type="checkbox"
-          checked={options.blogPost}
+          type="radio"
+         name="option"
+         value="blogPost"
           onChange={() =>
-            handleCheckboxChange(!options["blogPost"], "blogPost")
+            handleCheckboxChange("blogPost")
           }
           
         />
@@ -102,14 +95,15 @@ interface CheckBoxOption {
 
       <CheckboxLabel>
         <CheckboxInput
-          type="checkbox"
-          checked={options.other}
-          onChange={() => handleCheckboxChange(!options["other"], "other")}
+          type="radio"
+          name="option"
+          value="other"
+          onChange={() => handleCheckboxChange("other")}
         />
         Other
       </CheckboxLabel> 
 
-      {options.other && (
+      {options ==="other" && (
         <Input
           type="text"
           placeholder="Please specify"

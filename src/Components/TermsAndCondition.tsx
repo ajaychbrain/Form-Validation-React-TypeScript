@@ -15,7 +15,7 @@ interface ITandCond {
             <CheckboxLabel>
                 <CheckboxInput type="checkbox"/>
                 I have read, understood, and accepted the PRIVACY POLICY for
-        membership.Terms and Conditions
+                membership.Terms and Conditions
             </CheckboxLabel>
             <Button  onClick={props.onSubmitHandler}>
         Submit

@@ -24,6 +24,7 @@ const MainForm: React.FC = () => {
       state: "",
       city: "",
     },
+    otherData:"",
   });
 
   const initialError = {
@@ -51,11 +52,13 @@ const MainForm: React.FC = () => {
       };
     });
   };
-  const handleCheckBoxData = (data: any) => {
+  const handleCheckBoxData = (data: any, other:string) => {
+    console.log(other)
     setData((prev) => {
       return {
         ...prev,
         checkboxData: data,
+        otherData:other
       };
     });
   };
@@ -137,7 +140,7 @@ const MainForm: React.FC = () => {
   const onSubmitHandler = () => {
     const isValid = validateFormData();
     if (isValid) {
-      console.log("Form Submitted SuccessFully");
+      console.log("Form Submitted SuccessFully",data);
     }
 
   };
