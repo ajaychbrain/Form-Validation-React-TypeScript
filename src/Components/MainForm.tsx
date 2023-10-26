@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { MainWrapper } from './styles/MainWrapper';
+import {Country, State, City } from "country-state-city"
 // import envelope from "./"
-import { ErrorModel, Label, MainContainer, MainHeading, NameStyle } from './styles/FormStyles';
+import {Label, MainContainer, MainHeading, NameStyle } from './styles/FormStyles';
+// import MessageIcon from "./svg/messageIcon.svg";
 import Input from './Input';
 import AddressComponent from './AddressComponent';
 import CheckboxComponent from './CheckBoxComponents';
@@ -160,6 +162,7 @@ const MainForm: React.FC = () => {
               type="text"
               label="NAME *"
               placeholder="First Name"
+              // icon={MessageIcon}
               onChange={(e: any) => onChangeHandler(e, "fname")}
 
             />
@@ -220,7 +223,7 @@ const MainForm: React.FC = () => {
           />
            {error.dob ? <Errorshow message={error.dob} /> : ""}
 
-        </MainContainer>
+        </MainContainer>  
 
         <MainContainer>
           <Label>6. Where did you hear about us?</Label>
@@ -233,7 +236,7 @@ const MainForm: React.FC = () => {
 
         </MainContainer>
 
-
+    
 
       </MainWrapper>
     </>
